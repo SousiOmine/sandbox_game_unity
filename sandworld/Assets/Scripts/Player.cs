@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public int Health { get; private set; } = 20;
     [SerializeField] Camera playerCamera;
     [SerializeField] private float moveSpeed = 1f;
     
