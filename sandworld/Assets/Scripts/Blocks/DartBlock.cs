@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class DartBlock : ItemBase
+public class DartBlock : IBlock
 {
-    public IItem item => new DartItem();
+    public string Id => "dart";
+    public IItem Item => new DartItem();
 
     public HorizontalDirection Direction => HorizontalDirection.North;
 }

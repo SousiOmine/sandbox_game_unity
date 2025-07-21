@@ -9,7 +9,8 @@ public enum HorizontalDirection
 }
 public interface IBlock
 {
-    public IItem item { get; }
+    public string Id { get; }
+    public IItem Item { get; }
 
     public HorizontalDirection Direction { get; }
 

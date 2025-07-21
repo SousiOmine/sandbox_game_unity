@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class AirBlock : ItemBase
+public class AirBlock : IBlock
 {
-    public IItem item => new AirItem();
+    public string Id => "air";
+    public IItem Item => new AirItem();
 
     public HorizontalDirection Direction => HorizontalDirection.North;
 }

@@ -1,11 +1,13 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayerBehavior : MonoBehaviour, IPlayer
 {
-    public int Health { get; private set; } = 20;
+    public Vector3 Position { get; set; } = new Vector3(0, 11, 0);
+    public Vector3 Rotation { get; set; } = Vector3.zero;
+    public int Health { get; set; } = 20;
+    
     [SerializeField] Camera playerCamera;
     [SerializeField] private float moveSpeed = 1f;
     
@@ -16,8 +18,16 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private bool isJumping = false;
 
+    private void Awake()
+    {
+
+    }
+
     private void Start()
     {
+        transform.position = Position;
+        transform.rotation = Quaternion.Euler(Rotation);
+        
         jumpAction = InputSystem.actions.FindAction("Jump");
         lookAction = InputSystem.actions.FindAction("Look");
         moveAction = InputSystem.actions.FindAction("Move");
@@ -49,7 +59,8 @@ public class Player : MonoBehaviour
             Jump();
         }
 
-
+        Position = transform.position;
+        Rotation = transform.rotation.eulerAngles;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -69,4 +80,5 @@ public class Player : MonoBehaviour
         rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
         isJumping = true;
     }
+
 }
