@@ -37,6 +37,25 @@ public class PlayerBehavior : MonoBehaviour, IPlayer
 
     private void Update()
     {
+        //int blockLayer = LayerMask.GetMask("Block");
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);
+
+        RaycastHit rayHit;
+        if (Physics.Raycast(ray, out rayHit, 10f))
+        {
+            BlockBehaviorBase block = rayHit.collider.GetComponentInParent<BlockBehaviorBase>();
+            if (block is not null && block.Block is not null)
+            {
+                Debug.Log(block.Block.Id);
+            }
+            else
+            {
+                Debug.Log(rayHit.collider.gameObject.name);
+            }
+            //Debug.Log(block.Block.Id);
+        }
+        
         //前後左右移動
         Vector2 move2d = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(move2d.x, 0, move2d.y) * moveSpeed;

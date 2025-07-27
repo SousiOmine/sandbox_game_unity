@@ -17,3 +17,5 @@ MonoBehaviour:
     prefab: {fileID: 36744896739613315, guid: 69cda5c380ae1af4593457aa06459dfa, type: 3}
   - BlockID: dart
     prefab: {fileID: 5184348499207030718, guid: e0e47900a0d07a64489cfe77ee7dc485, type: 3}
+  - BlockID: water
+    prefab: {fileID: 2434331370512560869, guid: 2283e81ff9fa28f459715f37126ebcd3, type: 3}
